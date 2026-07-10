@@ -8,10 +8,13 @@ export type Customer = {
 export type CreateCustomer = Pick<Customer, 'name' | 'email'>;
 export type UpdateCustomer = Partial<Omit<Customer, 'id'>>;
 
-export type Invoices = {
+export type Invoice = {
 	id: number;
 	value: string;
 	customer_id: number;
 	status: 'Paid' | 'Pending';
 	created_at: string;
 };
+
+export type CreateInvoice = Pick<Invoice, 'value' | 'customer_id'>;
+export type UpdateInvoice = Partial<Omit<Invoice, 'id'>>;
