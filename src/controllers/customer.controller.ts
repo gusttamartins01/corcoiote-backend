@@ -1,6 +1,9 @@
 import type { Request, Response } from 'express';
+import type {
+	CreateCustomerInput,
+	UpdateCustomerInput,
+} from '../schemas/customer.schema.ts';
 import * as CustomerService from '../services/customer.service.ts';
-import type { CreateCustomer, UpdateCustomer } from '../types.ts';
 
 export function getAllCustomer(_request: Request, response: Response) {
 	const customers = CustomerService.findAllCustomers();
@@ -17,7 +20,7 @@ export function getCustomerById(request: Request, response: Response) {
 }
 
 export function createCustomer(request: Request, response: Response) {
-	const { name, email } = request.body as CreateCustomer;
+	const { name, email } = request.body as CreateCustomerInput;
 
 	const customer = CustomerService.insertCustomer({ name, email });
 
@@ -26,7 +29,7 @@ export function createCustomer(request: Request, response: Response) {
 
 export function updateCustomer(request: Request, response: Response) {
 	const id = Number(request.params.id);
-	const { name, email, status } = request.body as UpdateCustomer;
+	const { name, email, status } = request.body as UpdateCustomerInput;
 
 	const customer = CustomerService.modifyCustomer(id, {
 		name,
