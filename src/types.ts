@@ -4,3 +4,8 @@ export type Customer = {
 	email: string;
 	status: boolean;
 };
+
+export type ValidationFiledError = {
+	field: string;
+	message: string;
+};
