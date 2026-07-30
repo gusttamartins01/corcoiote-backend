@@ -1,5 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
 import { NotFoundError, ValidationError } from '../errors/index.ts';
+import logger from '../lib/logger.ts';
 
 export default function errorHandler(
 	error: unknown,
@@ -19,7 +20,7 @@ export default function errorHandler(
 		});
 	}
 
-	console.log(error);
+	logger.error(error);
 
 	response.status(500).json({ message: 'Erro interno do servidor.' });
 }
