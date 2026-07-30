@@ -13,7 +13,7 @@ app.use('/customers', CustomerRouter);
 
 app.use((_request, response) => {
 	response.status(404).json({
-		message: 'Págna não encontrada!',
+		message: 'Págna não encontrada!'
 	});
 });
 

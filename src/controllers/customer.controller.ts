@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
 import type {
 	CreateCustomerInput,
-	UpdateCustomerInput,
+	UpdateCustomerInput
 } from '../schemas/customer.schema.ts';
 import * as CustomerService from '../services/customer.service.ts';
 
@@ -34,7 +34,7 @@ export function updateCustomer(request: Request, response: Response) {
 	const customer = CustomerService.modifyCustomer(id, {
 		name,
 		email,
-		status,
+		status
 	});
 
 	response.status(200).json(customer);

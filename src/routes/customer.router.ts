@@ -3,7 +3,7 @@ import * as CustomerController from '../controllers/customer.controller.ts';
 import validate from '../middlewares/validate.ts';
 import {
 	createCustomerSchema,
-	updateCustomerSchema,
+	updateCustomerSchema
 } from '../schemas/customer.schema.ts';
 
 const router = Router();
@@ -13,12 +13,12 @@ router.get('/:id', CustomerController.getCustomerById);
 router.post(
 	'/',
 	validate(createCustomerSchema),
-	CustomerController.createCustomer,
+	CustomerController.createCustomer
 );
 router.put(
 	'/:id',
 	validate(updateCustomerSchema),
-	CustomerController.updateCustomer,
+	CustomerController.updateCustomer
 );
 router.delete('/:id', CustomerController.deleteCustomer);
 

@@ -2,7 +2,7 @@ import { NotFoundError } from '../errors/index.ts';
 import { customers } from '../mocks/customer.mock.ts';
 import type {
 	CreateCustomerInput,
-	UpdateCustomerInput,
+	UpdateCustomerInput
 } from '../schemas/customer.schema.ts';
 import type { Customer } from '../types.ts';
 
@@ -23,7 +23,7 @@ export function insertCustomer({ name, email }: CreateCustomerInput): Customer {
 		id: customers[customers.length - 1].id + 1,
 		name: name,
 		email: email,
-		status: true,
+		status: true
 	};
 
 	customers.push(customer);
@@ -33,7 +33,7 @@ export function insertCustomer({ name, email }: CreateCustomerInput): Customer {
 
 export function modifyCustomer(
 	id: number,
-	{ name, email, status }: UpdateCustomerInput,
+	{ name, email, status }: UpdateCustomerInput
 ): Customer {
 	const customer = customers.find((c) => c.id === id);
 
