@@ -16,5 +16,5 @@ export const updateCustomerSchema = z.object({
 	status: z.boolean('Entrada inválida: esperava-se um booleano').optional()
 });
 
-export type CreateCustomerInput = z.infer<typeof createCustomerSchema>;
-export type UpdateCustomerInput = z.infer<typeof updateCustomerSchema>;
+export type CreateCustomer = z.infer<typeof createCustomerSchema>;
+export type UpdateCustomer = z.infer<typeof updateCustomerSchema>;
