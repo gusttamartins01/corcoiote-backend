@@ -1,4 +1,4 @@
-import type { ValidationFiledError } from '../types.ts';
+import type { ValidationFieldError } from '../types.ts';
 
 export class NotFoundError extends Error {
 	statusCode: number;
@@ -11,9 +11,9 @@ export class NotFoundError extends Error {
 
 export class ValidationError extends Error {
 	statusCode: number;
-	fields: ValidationFiledError[];
+	fields: ValidationFieldError[];
 
-	constructor(message: string, fields: ValidationFiledError[]) {
+	constructor(message: string, fields: ValidationFieldError[]) {
 		super(message);
 		this.statusCode = 400;
 		this.fields = fields;

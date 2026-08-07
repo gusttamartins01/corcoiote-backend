@@ -5,7 +5,7 @@ export type Customer = {
 	status: boolean;
 };
 
-export type ValidationFiledError = {
+export type ValidationFieldError = {
 	field: string;
 	message: string;
 };
