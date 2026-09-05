@@ -3,7 +3,7 @@ export type Customer = {
 	name: string;
 	email: string;
 	imageUrl: string | null;
-	created_at: Date;
+	createdAt: Date;
 };
 
 export type ValidationFieldError = {

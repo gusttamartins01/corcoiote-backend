@@ -5,13 +5,13 @@ import type {
 } from '../schemas/customer.schema.ts';
 import * as CustomerService from '../services/customer.service.ts';
 
-export function getAllCustomer(_request: Request, response: Response) {
+export function getAllCustomer(_request: Request, response: Response): void {
 	const customers = CustomerService.findAllCustomers();
 
 	response.status(200).json(customers);
 }
 
-export function getCustomerById(request: Request, response: Response) {
+export function getCustomerById(request: Request, response: Response): void {
 	const id = Number(request.params.id);
 
 	const customer = CustomerService.findCustomerById(id);
@@ -19,28 +19,24 @@ export function getCustomerById(request: Request, response: Response) {
 	response.status(200).json(customer);
 }
 
-export function createCustomer(request: Request, response: Response) {
-	const { name, email } = request.body as CreateCustomer;
+export function createCustomer(request: Request, response: Response): void {
+	const body = request.body as CreateCustomer;
 
-	const customer = CustomerService.insertCustomer({ name, email });
+	const customer = CustomerService.insertCustomer(body);
 
 	response.status(201).json(customer);
 }
 
-export function updateCustomer(request: Request, response: Response) {
+export function updateCustomer(request: Request, response: Response): void {
 	const id = Number(request.params.id);
-	const { name, email, status } = request.body as UpdateCustomer;
+	const body = request.body as UpdateCustomer;
 
-	const customer = CustomerService.modifyCustomer(id, {
-		name,
-		email,
-		status
-	});
+	const customer = CustomerService.modifyCustomer(id, body);
 
 	response.status(200).json(customer);
 }
 
-export function deleteCustomer(request: Request, response: Response) {
+export function deleteCustomer(request: Request, response: Response): void {
 	const id = Number(request.params.id);
 
 	CustomerService.removeCustomer(id);
