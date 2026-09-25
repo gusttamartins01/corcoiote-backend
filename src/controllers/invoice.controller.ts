@@ -14,22 +14,35 @@ export function getAllInvoices(request: Request, response: Response): void {
 	response.status(200).json(invoices);
 }
 
-export async function getInvoicesById(
-	request: Request,
-	response: Response
-): void {}
+export function getInvoicesById(request: Request, response: Response): void {
+	const id = +request.params.id;
 
-export async function createInvoices(
-	request: Request,
-	response: Response
-): void {}
+	const invoice = InvoiceService.findInvoiceById(id);
 
-export async function updateInvoices(
-	request: Request,
-	response: Response
-): void {}
+	response.status(200).json(invoice);
+}
 
-export async function deleteInvoices(
-	request: Request,
-	response: Response
-): void {}
+export function createInvoices(request: Request, response: Response): void {
+	const body = request.body as CreateInvoice;
+
+	const invoice = InvoiceService.insertInvoice(body);
+
+	response.status(201).json(invoice);
+}
+
+export function updateInvoices(request: Request, response: Response): void {
+	const id = +request.params.id;
+	const body = request.body as UpdateInvoice;
+
+	const invoice = InvoiceService.modifyInvoice(id, body);
+
+	response.status(200).json(invoice);
+}
+
+export function deleteInvoices(request: Request, response: Response): void {
+	const id = +request.params.id;
+
+	InvoiceService.removeInvoice(id);
+
+	response.status(204).send();
+}
