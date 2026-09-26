@@ -24,7 +24,7 @@ export async function findInvoiceById(id: number): Promise<Invoice> {
 		where: { id }
 	});
 
-	if (!invoice) throw new NotFoundError(`Invoice de id ${id} não encontrada.`);
+	if (!invoice) throw new NotFoundError(`Fatura de id ${id} não encontrada.`);
 
 	return invoice;
 }
