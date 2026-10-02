@@ -2,7 +2,7 @@ import { NotFoundError } from '../errors/index.ts';
 import prisma from '../lib/prisma.ts';
 import type {
 	CreateInvoice,
-	UpdateInvoice
+	UpdateInvoice,
 } from '../schemas/invoice.schema.ts';
 import type { Invoice, Page } from '../types.ts';
 
@@ -13,7 +13,7 @@ export async function findAllInvoices({ page }: Page): Promise<Invoice[]> {
 		include: { customer: true },
 		orderBy: { createdAt: 'desc' },
 		skip: (page - 1) * PAGE_SIZE,
-		take: PAGE_SIZE
+		take: PAGE_SIZE,
 	});
 
 	return invoices;
@@ -21,7 +21,7 @@ export async function findAllInvoices({ page }: Page): Promise<Invoice[]> {
 
 export async function findInvoiceById(id: number): Promise<Invoice> {
 	const invoice = await prisma.invoice.findUnique({
-		where: { id }
+		where: { id },
 	});
 
 	if (!invoice) throw new NotFoundError(`Fatura de id ${id} não encontrada.`);
@@ -37,24 +37,24 @@ export async function insertInvoice(data: CreateInvoice): Promise<Invoice> {
 			date: data.status,
 			customer: {
 				connect: {
-					id: data.customerId
-				}
-			}
+					id: data.customerId,
+				},
+			},
 		},
-		include: { customer: true }
+		include: { customer: true },
 	});
 }
 
 export async function modifyInvoice(
 	id: number,
-	data: UpdateInvoice
+	data: UpdateInvoice,
 ): Promise<Invoice> {
 	await findInvoiceById(id);
 
 	return await prisma.invoice.update({
 		where: { id },
 		data,
-		include: { customer: true }
+		include: { customer: true },
 	});
 }
 
@@ -62,6 +62,6 @@ export async function removeInvoice(id: number): Promise<void> {
 	await findInvoiceById(id);
 
 	await prisma.invoice.delete({
-		where: { id }
+		where: { id },
 	});
 }

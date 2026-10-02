@@ -8,7 +8,7 @@ export const createInvoiceSchema = z.object({
 	date: z.coerce.date('Entrada inválida: precisa ser informado uma data.'),
 	customerId: z
 		.number('Entrada inválida: esperava-se um número.')
-		.positive('Entrada inválida: o número precisa maior que zero.')
+		.positive('Entrada inválida: o número precisa maior que zero.'),
 });
 
 export const updateInvoiceSchema = createInvoiceSchema.partial();

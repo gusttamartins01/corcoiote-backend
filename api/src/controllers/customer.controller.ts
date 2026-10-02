@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
 import type {
 	CreateCustomer,
-	UpdateCustomer
+	UpdateCustomer,
 } from '../schemas/customer.schema.ts';
 import * as CustomerService from '../services/customer.service.ts';
 

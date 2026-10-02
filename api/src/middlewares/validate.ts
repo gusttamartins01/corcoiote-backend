@@ -9,7 +9,7 @@ export default function validate(schema: ZodType) {
 		if (!result.success) {
 			const fields = result.error.issues.map((issue) => ({
 				field: issue.path.join(''),
-				message: issue.message
+				message: issue.message,
 			}));
 
 			next(new ValidationError('Dados inválidos.', fields));

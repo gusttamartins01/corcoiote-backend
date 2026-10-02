@@ -9,7 +9,7 @@ export async function findAllUsers(): Promise<User[]> {
 
 export async function findUsersById(id: number): Promise<User> {
 	const user = await prisma.user.findUnique({
-		where: { id }
+		where: { id },
 	});
 
 	if (!user) throw new NotFoundError(`Usuário de id ${id} não encontrada.`);
@@ -19,7 +19,7 @@ export async function findUsersById(id: number): Promise<User> {
 
 export async function insertUsers(data: CreateUser): Promise<User> {
 	return await prisma.user.create({
-		data
+		data,
 	});
 }
 
@@ -28,7 +28,7 @@ export async function modifyUsers(id: number, data: UpdateUser): Promise<User> {
 
 	return await prisma.user.update({
 		where: { id },
-		data
+		data,
 	});
 }
 
@@ -36,6 +36,6 @@ export async function removeUsers(id: number): Promise<void> {
 	await findUsersById(id);
 
 	await prisma.user.delete({
-		where: { id }
+		where: { id },
 	});
 }

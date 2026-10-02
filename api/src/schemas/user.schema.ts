@@ -5,7 +5,7 @@ export const createUserSchema = z.object({
 		.string('Entrada inválida: Esperava-se um texto')
 		.min(1, 'Muito curto: esperava-se um texto com ao menos 1 caractere'),
 	email: z.email('Endereço de e-mail inválido'),
-	password: z.string('Entrada inválida: Esperava-se um texto')
+	password: z.string('Entrada inválida: Esperava-se um texto'),
 });
 
 export const updateUserSchema = createUserSchema.partial();

@@ -3,7 +3,7 @@ import * as InvoiceController from '../controllers/invoice.controller.ts';
 import validate from '../middlewares/validate.ts';
 import {
 	createInvoiceSchema,
-	updateInvoiceSchema
+	updateInvoiceSchema,
 } from '../schemas/invoice.schema.ts';
 
 const router = Router();
@@ -13,12 +13,12 @@ router.get('/:id', InvoiceController.getInvoicesById);
 router.post(
 	'/',
 	validate(createInvoiceSchema),
-	InvoiceController.createInvoices
+	InvoiceController.createInvoices,
 );
 router.put(
 	'/:id',
 	validate(updateInvoiceSchema),
-	InvoiceController.updateInvoices
+	InvoiceController.updateInvoices,
 );
 router.delete('/:id', InvoiceController.deleteInvoices);
 

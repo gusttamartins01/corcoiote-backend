@@ -18,7 +18,7 @@ app.use('/users', UserRouter);
 
 app.use((_request, response) => {
 	response.status(404).json({
-		message: 'Página não encontrada!'
+		message: 'Página não encontrada!',
 	});
 });
 

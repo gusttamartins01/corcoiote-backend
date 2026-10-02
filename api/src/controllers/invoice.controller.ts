@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
 import type {
 	CreateInvoice,
-	UpdateInvoice
+	UpdateInvoice,
 } from '../schemas/invoice.schema.ts';
 import * as InvoiceService from '../services/invoice.service.ts';
 import type { Page } from '../types.ts';
